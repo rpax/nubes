@@ -11,7 +11,7 @@ import mock.custom.domains.CustomObject;
 public class InjectCustomObjectController {
 		
 	@GET
-	public CustomObject echoCustomObject(@Param CustomObject custom) {
+	public CustomObject echoCustomObject(@Param("custom") CustomObject custom) {
 		return custom;
 	}
 }

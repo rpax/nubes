@@ -30,7 +30,7 @@ public class MethodParamInjectionController {
 
 	@GET("/headers")
 	@ContentType("text/plain")
-	public String getHeader(@Headers MultiMap headers, @Param String headerName) {
+	public String getHeader(@Headers MultiMap headers, @Param("headerName") String headerName) {
 		return headers.get(headerName);
 	}
 

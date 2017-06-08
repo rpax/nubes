@@ -27,7 +27,7 @@ public class HeadersControllerTest {
 	}
 
 	@GET("echoByName")
-	public void getHeaderByName(HttpServerResponse response, @Header String someHeader) {
+	public void getHeaderByName(HttpServerResponse response, @Header("someHeader") String someHeader) {
 		response.end(someHeader);
 	}
 

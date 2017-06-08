@@ -34,7 +34,7 @@ public class PathParametersTestController {
 	}
 
 	@GET("byName/:dog")
-	public void testParamByName(HttpServerResponse response, @Param String dog) {
+	public void testParamByName(HttpServerResponse response, @Param("dog") String dog) {
 		response.end(dog);
 	}
 }

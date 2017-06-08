@@ -31,13 +31,13 @@ public class CookieTestController {
 
 	@GET("echoByName")
 	@Cookies
-	public void echoCookieByName(HttpServerResponse response, @CookieValue String dog) {
+	public void echoCookieByName(HttpServerResponse response, @CookieValue("dog") String dog) {
 		response.end(dog);
 	}
 
 	@GET("echoObject")
 	@Cookies
-	public void echoCookieObject(HttpServerResponse response, @CookieValue Cookie dog) {
+	public void echoCookieObject(HttpServerResponse response, @CookieValue("dog") Cookie dog) {
 		response.end(dog.getValue());
 	}
 

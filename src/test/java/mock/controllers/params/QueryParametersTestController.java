@@ -46,7 +46,7 @@ public class QueryParametersTestController {
 	}
 
 	@GET("byName")
-	public void testByName(HttpServerResponse response, @Param String dog) {
+	public void testByName(HttpServerResponse response, @Param("dog") String dog) {
 		response.end(dog);
 	}
 }

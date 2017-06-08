@@ -29,7 +29,9 @@ public class FormParametersTestController {
 
 	@GET("boolean")
 	@POST("boolean")
-	public void testParam(RoutingContext context, @Param Boolean value) {
-		context.response().end(Boolean.toString(value));
+	public void testParam(RoutingContext context, @Param("value") Boolean value) {
+		context
+		.response()
+		.end(Boolean.toString(value));
 	}
 }
