@@ -64,6 +64,7 @@ public class SimpleFuture<T> implements Future<T> {
 	/**
 	 * The result of the operation. This will be null if the operation failed.
 	 */
+	@Override
 	public T result()
 	{
 		return result;
@@ -73,6 +74,7 @@ public class SimpleFuture<T> implements Future<T> {
 	 * An exception describing failure. This will be null if the operation
 	 * succeeded.
 	 */
+	@Override
 	public Throwable cause()
 	{
 		return throwable;
@@ -81,6 +83,7 @@ public class SimpleFuture<T> implements Future<T> {
 	/**
 	 * Did it succeeed?
 	 */
+	@Override
 	public boolean succeeded()
 	{
 		return succeeded;
@@ -89,6 +92,7 @@ public class SimpleFuture<T> implements Future<T> {
 	/**
 	 * Did it fail?
 	 */
+	@Override
 	public boolean failed()
 	{
 		return failed;
@@ -97,6 +101,7 @@ public class SimpleFuture<T> implements Future<T> {
 	/**
 	 * Has it completed?
 	 */
+	@Override
 	public boolean isComplete()
 	{
 		return failed || succeeded;
@@ -105,6 +110,7 @@ public class SimpleFuture<T> implements Future<T> {
 	/**
 	 * Set a handler for the result. It will get called when it's complete
 	 */
+	@Override
 	public Future<T> setHandler(Handler<AsyncResult<T>> handler)
 	{
 		this.handler = handler;
