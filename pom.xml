@@ -10,7 +10,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.massisframework</groupId>
 	<artifactId>nubes</artifactId>
-	<version>1.4-SNAPSHOT</version>
+	<version>1.4.1-SNAPSHOT</version>
 	<name>nubes</name>
 	<url>https://github.com/rpax/nubes</url>
 	<description>
