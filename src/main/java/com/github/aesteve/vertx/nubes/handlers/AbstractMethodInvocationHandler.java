@@ -2,8 +2,8 @@ package com.github.aesteve.vertx.nubes.handlers;
 
 import com.github.aesteve.vertx.nubes.Config;
 import com.github.aesteve.vertx.nubes.annotations.params.Param;
-import com.github.aesteve.vertx.nubes.annotations.routing.http.UsesRoutingContext;
 import com.github.aesteve.vertx.nubes.exceptions.params.WrongParameterException;
+import com.github.aesteve.vertx.nubes.reflections.injectors.UsesRoutingContext;
 import com.github.aesteve.vertx.nubes.reflections.injectors.annot.AnnotatedParamInjector;
 import com.github.aesteve.vertx.nubes.reflections.injectors.annot.AnnotatedParamInjectorRegistry;
 import com.github.aesteve.vertx.nubes.reflections.injectors.typed.ParamInjector;
@@ -39,14 +39,10 @@ public abstract class AbstractMethodInvocationHandler<T> implements Handler<Rout
 		returnsSomething = !method.getReturnType().equals(Void.TYPE);
 		this.hasNext = hasNext;
 		parameters = method.getParameters();
-		if (method.getAnnotation(UsesRoutingContext.class) != null)
-		{
-			usesRoutingContext = true;
-		}
 		for (Parameter param : parameters)
 		{
 			Class<?> paramType = param.getType();
-			if (paramType.equals(RoutingContext.class))
+			if (paramType.equals(RoutingContext.class) || paramType.getAnnotation(UsesRoutingContext.class)!=null)
 			{
 				usesRoutingContext = true;
 			}
@@ -86,13 +82,12 @@ public abstract class AbstractMethodInvocationHandler<T> implements Handler<Rout
 	private Object getParameterInstance(RoutingContext context, Annotation[] annotations,
 			Class<?> parameterClass, String paramName) throws WrongParameterException
 	{
-		if (annotations.length > 1)
-		{
-			annotations = Arrays.stream(annotations)
-					.filter(a -> a.annotationType() != Param.class)
-					.toArray(s -> new Annotation[s]);
+		if (annotations.length>1) {
+			annotations=Arrays.stream(annotations)
+					.filter(a->a.annotationType()!=Param.class)
+					.toArray(s->new Annotation[s]);
 		}
-
+		
 		final TypedParamInjectorRegistry typeInjectors = config.getTypeInjectors();
 		if (annotations.length == 0)
 		{ // rely on type
