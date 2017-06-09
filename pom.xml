@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.massisframework</groupId>
 	<artifactId>nubes</artifactId>
-	<version>1.4.6</version>
+	<version>1.4.7-SNAPSHOT</version>
 	<name>nubes</name>
 	<url>https://github.com/rpax/nubes</url>
 	<description>
@@ -20,7 +20,7 @@
 		<connection>scm:git:git@github.com:rpax/nubes</connection>
 		<url>scm:git:git@github.com:rpax/nubes</url>
 		<developerConnection>scm:git:git@github.com:rpax/nubes</developerConnection>
-		<tag>nubes-1.4.6</tag>
+		<tag>HEAD</tag>
 	</scm>
 	<distributionManagement>
 		<snapshotRepository>
